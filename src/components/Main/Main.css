@@ -1,4 +1,4 @@
-@export .cards__list {
+.cards__list {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
