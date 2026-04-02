@@ -1,8 +1,3 @@
-# React + Vite
+# Project 10
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I have finalized the Weather app in which users can see the weather update in their locations and see suggestions on types of clothing they should wear. They also have the option to upload their garments accordingly. The add garment modal allows users to type in their name, image url and weather type using radio buttons. Once the image is uploaded they can click on the image to see a big preview in the modal.
