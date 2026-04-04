@@ -1,8 +1,10 @@
 .cards__list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
+  list-style-type: none;
   padding: 0;
-  list-style: none;
-  gap: 21px;
+  margin: 0;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 325px);
+  grid-gap: 15px;
+  padding-bottom: 40px;
 }

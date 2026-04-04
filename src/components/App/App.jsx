@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { coordinates, APIkey } from "../../utils/constants";
+import { coordinates, apiKey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if (coordinates.latitude && coordinates.longitude) {
-      getWeather(coordinates, APIkey)
+      getWeather(coordinates, apiKey)
         .then((data) => {
           const filteredData = filterWeatherData(data);
           setWeatherData(filteredData);
@@ -87,7 +87,9 @@ function App() {
               type="radio"
               className="modal__radio-input"
               required
-            />{" "}
+              value="hot"
+              name="weatherType"
+            />
             Hot
           </label>
 
