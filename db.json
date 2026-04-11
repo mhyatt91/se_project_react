@@ -13,12 +13,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Dress.png?etag=1f9cd32a311ab139cab43494883720bf"
     },
     {
-      "_id": 7,
-      "name": "Jeans",
-      "weather": "warm",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jeans.png?etag=58345e8bef1ce5f95ac882e71d309e6c"
-    },
-    {
       "_id": 9,
       "name": "Sandals",
       "weather": "hot",
@@ -49,16 +43,22 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432"
     },
     {
-      "_id": 15,
-      "name": "Sweatshirt",
-      "weather": "warm",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sweatshirt.png?etag=008a9674757bea2e0bdb31242e364be0"
-    },
-    {
       "_id": 16,
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "name": "Melissa",
+      "imageUrl": "https://th.bing.com/th/id/R.d6bfaab975b9ece697a0de1292eca71e?rik=7Irzn%2bOJOFsOKw&pid=ImgRaw&r=0",
+      "weather": "warm",
+      "_id": 17
+    },
+    {
+      "name": "Melissa",
+      "imageUrl": "https://th.bing.com/th/id/R.d6bfaab975b9ece697a0de1292eca71e?rik=7Irzn%2bOJOFsOKw&pid=ImgRaw&r=0",
+      "weather": "hot",
+      "_id": 18
     }
   ]
 }

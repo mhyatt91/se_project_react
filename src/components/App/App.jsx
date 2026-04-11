@@ -11,7 +11,7 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import Footer from "../Footer/Footer";
 import { defaultClothingItems } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { getItems, removeItem } from "../../utils/api";
+import { getItems, addItem, removeItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -44,7 +44,7 @@ function App() {
     removeItem(card._id).then(() => {
       setClothingItems((cards) => {
         return cards.filter((item) => {
-          item._id !== card._id;
+          return item._id !== card._id;
         });
       });
       closeActiveModal();
@@ -60,7 +60,7 @@ function App() {
 
     addItem(newCardData).then((data) => {
       setClothingItems([data, ...clothingItems]);
-      closeAllModals();
+      closeActiveModal();
     });
   };
 
