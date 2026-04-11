@@ -59,6 +59,30 @@
       "imageUrl": "https://th.bing.com/th/id/R.d6bfaab975b9ece697a0de1292eca71e?rik=7Irzn%2bOJOFsOKw&pid=ImgRaw&r=0",
       "weather": "hot",
       "_id": 18
+    },
+    {
+      "name": "Missy",
+      "imageUrl": "https://insights.som.yale.edu/sites/default/files/styles/max_2600x2600/public/2022-10/space.jpeg?itok=ZYNlzGF7",
+      "weather": "cold",
+      "_id": 19
+    },
+    {
+      "name": "Missy",
+      "imageUrl": "https://insights.som.yale.edu/sites/default/files/styles/max_2600x2600/public/2022-10/space.jpeg?itok=ZYNlzGF7",
+      "weather": "cold",
+      "_id": 20
+    },
+    {
+      "name": "Missy",
+      "imageUrl": "https://insights.som.yale.edu/sites/default/files/styles/max_2600x2600/public/2022-10/space.jpeg?itok=ZYNlzGF7",
+      "weather": "cold",
+      "_id": 22
+    },
+    {
+      "name": "Melissa",
+      "imageUrl": "https://th.bing.com/th/id/R.d6bfaab975b9ece697a0de1292eca71e?rik=7Irzn%2bOJOFsOKw&pid=ImgRaw&r=0",
+      "weather": "warm",
+      "_id": 23
     }
   ]
 }

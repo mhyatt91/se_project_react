@@ -5,8 +5,15 @@
 }
 
 .footer__copyright {
-  margin-top: 90px;
-  margin: left 40px;
+  margin-top: 778px;
+  margin-left: 40px;
   font-family: "Cabinet Grotesk", "Arial", sans-serif;
   font-size: 16px;
+}
+
+.footer__copyright-date {
+  margin-right: 42px;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-size: 16px;
+  margin-top: 778px;
 }
