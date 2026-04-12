@@ -8,10 +8,9 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import Footer from "../Footer/Footer";
-import { defaultClothingItems } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { getItems, addItem, removeItem } from "../../utils/api";
+import Footer from "../Footer/Footer.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -41,14 +40,16 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    removeItem(card._id).then(() => {
-      setClothingItems((cards) => {
-        return cards.filter((item) => {
-          return item._id !== card._id;
+    removeItem(card._id)
+      .then(() => {
+        setClothingItems((cards) => {
+          return cards.filter((item) => {
+            return item._id !== card._id;
+          });
         });
-      });
-      closeActiveModal();
-    });
+        closeActiveModal();
+      })
+      .catch((error) => console.log(error));
   };
 
   const onAddItem = (inputValues) => {
@@ -58,18 +59,13 @@ function App() {
       weather: inputValues.weatherType,
     };
 
-    addItem(newCardData).then((data) => {
-      setClothingItems([data, ...clothingItems]);
-      closeActiveModal();
-    });
+    addItem(newCardData)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch((error) => console.log(error));
   };
-
-  // const removeItem = (card) => {
-  //   removeItem(card._id).then((data) => {
-  //     setClothingItems([data, ...clothingItems]);
-  //    closeAllModals();
-  //   });
-  // };
 
   const handleAddClick = () => {
     setActiveModal("add-garment");

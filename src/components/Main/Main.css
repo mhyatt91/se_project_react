@@ -8,3 +8,9 @@
   grid-gap: 15px;
   padding-bottom: 40px;
 }
+
+.cards__text {
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
