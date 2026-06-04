@@ -11,6 +11,8 @@ import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { getItems, addItem, removeItem } from "../../utils/api";
 import Footer from "../Footer/Footer.jsx";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import RegisterModal from "../RegisterModal/RegisterModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -25,6 +27,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cardToDelete, setCardToDelete] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -86,13 +89,7 @@ function App() {
 
       getItems()
         .then((data) => {
-          // TODO New items must appear first
-          // Reverse array
-
-          //const filteredArr = arr.filter((item) => {
-          // return item._id != id})
-
-          setClothingItems(data);
+          setClothingItems(data.reverse());
         })
         .catch(console.error);
     }
@@ -126,11 +123,13 @@ function App() {
             <Route
               path="/profile"
               element={
-                <Profile
-                  onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
-                  onAddClick={handleAddClick}
-                />
+                <ProtectedRoute isLoggedIn={isLoggedIn}>
+                  <Profile
+                    onCardClick={handleCardClick}
+                    clothingItems={clothingItems}
+                    onAddClick={handleAddClick}
+                  />
+                </ProtectedRoute>
               }
             />
           </Routes>
@@ -145,6 +144,10 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
           handleDeleteCard={handleDeleteCard}
+        />
+        <RegisterModal
+          isOpen={activeModal === "register"}
+          onClose={closeActiveModal}
         />
         <Footer />
       </div>
