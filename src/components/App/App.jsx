@@ -13,6 +13,7 @@ import { getItems, addItem, removeItem } from "../../utils/api";
 import Footer from "../Footer/Footer.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
+import { register, signin } from "../../utils/auth";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -77,6 +78,32 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
   };
+
+  const handleLogin = ({ email, password }) => {
+    signin(email, password)
+      .then((res) => {
+        localStorage.setItem("jwt", res.token);
+        setIsLoggedIn(true);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleRegistration = ({ name, avatar, email, password }) => {
+    register(name, avatar, email, password)
+      .then(() => {
+        handleLogin({ email, password });
+      })
+      .catch(console.error);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (!token) {
+      return; // No token? Do nothing.
+    }
+    // TODO: check token validity
+  }, []);
 
   useEffect(() => {
     if (coordinates.latitude && coordinates.longitude) {
@@ -148,6 +175,7 @@ function App() {
         <RegisterModal
           isOpen={activeModal === "register"}
           onClose={closeActiveModal}
+          onRegister={handleRegistration}
         />
         <Footer />
       </div>

@@ -1,6 +1,9 @@
 const baseUrl = "http://localhost:3001";
 
-const headers = { "Content-Type": "application/json" };
+const headers = {
+  "Content-Type": "application/json",
+  authorization: `Bearer ${token}`,
+};
 
 export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
@@ -12,7 +15,9 @@ export const getItems = () =>
 export const addItem = ({ name, imageUrl, weather }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers,
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
     body: JSON.stringify({
       name,
       imageUrl,
@@ -24,6 +29,8 @@ export const addItem = ({ name, imageUrl, weather }) => {
 export const removeItem = (itemID) => {
   return fetch(`${baseUrl}/items/${itemID}`, {
     method: "DELETE",
-    headers,
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
   }).then(handleServerResponse);
 };

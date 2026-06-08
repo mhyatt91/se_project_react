@@ -1,4 +1,16 @@
+const BASE_URL = "http://localhost:3001";
+import Header from "../components/Header/Header";
 import { handleServerResponse } from "./api";
+
+export const authorization = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
 
 export const register = (name, avatar, email, password) => {
   return fetch(`${BASE_URL}/signup`, {
