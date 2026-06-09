@@ -13,7 +13,8 @@ import { getItems, addItem, removeItem } from "../../utils/api";
 import Footer from "../Footer/Footer.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
-import { register, signin } from "../../utils/auth";
+import { register, signin, authorization } from "../../utils/auth";
+//import { trusted } from "mongoose";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -29,6 +30,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cardToDelete, setCardToDelete] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -44,7 +46,8 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    removeItem(card._id)
+    const token = localStorage.getItem("jwt");
+    removeItem(card._id, token)
       .then(() => {
         setClothingItems((cards) => {
           return cards.filter((item) => {
@@ -57,13 +60,14 @@ function App() {
   };
 
   const onAddItem = (inputValues) => {
+    const token = localStorage.getItem("jwt");
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weatherType,
     };
 
-    addItem(newCardData)
+    addItem(newCardData, token)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
@@ -100,9 +104,14 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("jwt");
     if (!token) {
-      return; // No token? Do nothing.
+      return;
     }
-    // TODO: check token validity
+    authorization(token)
+      .then((user) => {
+        setIsLoggedIn(true);
+        setCurrentUser(user);
+      })
+      .catch(console.error);
   }, []);
 
   useEffect(() => {

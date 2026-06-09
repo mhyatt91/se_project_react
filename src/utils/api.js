@@ -12,7 +12,7 @@ export const handleServerResponse = (res) => {
 export const getItems = () =>
   fetch(`${baseUrl}/items`, { headers }).then(handleServerResponse);
 
-export const addItem = ({ name, imageUrl, weather }) => {
+export const addItem = ({ name, imageUrl, weather }, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -26,7 +26,7 @@ export const addItem = ({ name, imageUrl, weather }) => {
   }).then(handleServerResponse);
 };
 
-export const removeItem = (itemID) => {
+export const removeItem = (itemID, token) => {
   return fetch(`${baseUrl}/items/${itemID}`, {
     method: "DELETE",
     headers: {
