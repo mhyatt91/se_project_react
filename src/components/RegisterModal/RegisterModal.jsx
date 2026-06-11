@@ -28,22 +28,7 @@ const RegisterModal = ({ isOpen, onClose, onRegisterUser }) => {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <form className="modal__form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="avatar"
-          placeholder="Avatar URL"
-          value={formData.avatar}
-          onChange={handleChange}
-        />
-
+        <p className="modal__title">Email *</p>
         <input
           type="email"
           name="email"
@@ -51,7 +36,7 @@ const RegisterModal = ({ isOpen, onClose, onRegisterUser }) => {
           value={formData.email}
           onChange={handleChange}
         />
-
+        <p className="modal__title">Password *</p>
         <input
           type="password"
           name="password"
@@ -59,7 +44,22 @@ const RegisterModal = ({ isOpen, onClose, onRegisterUser }) => {
           value={formData.password}
           onChange={handleChange}
         />
-
+        <p className="modal__title">Name *</p>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <p className="modal__title">Avatar *</p>
+        <input
+          type="text"
+          name="avatar"
+          placeholder="Avatar URL"
+          value={formData.avatar}
+          onChange={handleChange}
+        />
         <button type="submit">Sign Up</button>
       </form>
     </div>

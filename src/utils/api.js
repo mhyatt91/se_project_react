@@ -1,16 +1,13 @@
 const baseUrl = "http://localhost:3001";
 
-const headers = {
-  "Content-Type": "application/json",
-  authorization: `Bearer ${token}`,
-};
-
 export const handleServerResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
 export const getItems = () =>
-  fetch(`${baseUrl}/items`, { headers }).then(handleServerResponse);
+  fetch(`${baseUrl}/items`, {
+    headers: { "Content-Type": "application/json" },
+  }).then(handleServerResponse);
 
 export const addItem = ({ name, imageUrl, weather }, token) => {
   return fetch(`${baseUrl}/items`, {

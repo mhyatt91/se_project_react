@@ -17,7 +17,7 @@
 }
 
 .modal__container {
-  max-width: 730px;
+  max-width: 798px;
   width: 100%;
   border-radius: 8px;
   background-color: #fff;
@@ -98,14 +98,21 @@
 .modal__form {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 496px;
+  height: 456px;
+  padding-right: 28px;
+  padding-left: 28px;
+  padding-top: 28px;
+  padding-bottom: 34px;
+  background-color: white;
 }
 
 .modal__input {
   display: block;
   border: 1px;
   border-bottom: 2px solid black;
-  width: 100%;
+  width: 440px;
+  height: 20px;
   margin-top: 8px;
 }
 

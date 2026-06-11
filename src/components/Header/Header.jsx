@@ -4,7 +4,13 @@ import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link, NavLink } from "react-router-dom";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  handleLoginClick,
+  handleRegisterClick,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -18,20 +24,44 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        + Add Clothes
-      </button>
-      add buttons here
-      <NavLink className="header__nav-link" to="/profile">
-        <div className="header__user-container">
-          <p className="header__username">Terrence Tegegne</p>
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
-        </div>
-      </NavLink>
+      {!isLoggedIn ? (
+        <>
+          <button
+            onClick={handleRegisterClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            Sign Up
+          </button>
+          <button
+            onClick={handleLoginClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            Log In
+          </button>
+        </>
+      ) : (
+        <>
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            + Add Clothes
+          </button>
+          <NavLink className="header__nav-link" to="/profile">
+            <div className="header__user-container">
+              <p className="header__username">Terrence Tegegne</p>
+              <img
+                src={avatar}
+                alt="Terrence Tegegne"
+                className="header__avatar"
+              />
+            </div>
+          </NavLink>
+        </>
+      )}
     </header>
   );
 }

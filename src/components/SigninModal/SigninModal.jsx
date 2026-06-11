@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const SigninModal = ({ isOpen, onSignin, onClose }) => {
   const defaultValues = {
     email: "",
@@ -24,24 +26,27 @@ const SigninModal = ({ isOpen, onSignin, onClose }) => {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <form className="modal__form" onSubmit={handleSubmit}>
+        <p className="modal__title">Email *</p>
         <input
-          email="text"
-          password="password"
-          placeholder="Name"
-          value={formData.name}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <p className="modal__title">Password *</p>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
           onChange={handleChange}
         />
 
-        <input
-          email="email"
-          password="password"
-          placeholder=""
-          value={formData.avatar}
-          onChange={handleChange}
-        />
-
-        <button type="submit">Sign In</button>
+        <button type="submit">Log In</button>
       </form>
     </div>
   );
 };
+
+export default SigninModal;
