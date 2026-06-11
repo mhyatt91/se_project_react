@@ -199,7 +199,7 @@ function App() {
           <SigninModal
             isOpen={activeModal === "signin"}
             onClose={closeActiveModal}
-            onLogin={handleLogin}
+            onSignin={handleLogin}
           />
           <Footer />
         </div>
