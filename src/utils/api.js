@@ -8,6 +8,7 @@ export const getItems = () =>
   fetch(`${baseUrl}/items`, {
     headers: { "Content-Type": "application/json" },
   }).then(handleServerResponse);
+//.then((res) => res.data);
 
 export const addItem = ({ name, imageUrl, weather }, token) => {
   return fetch(`${baseUrl}/items`, {
@@ -21,7 +22,9 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
       imageUrl,
       weather,
     }),
-  }).then(handleServerResponse);
+  })
+    .then(handleServerResponse)
+    .then((res) => res.data);
 };
 
 export const removeItem = (itemID, token) => {
