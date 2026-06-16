@@ -13,6 +13,7 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
@@ -27,6 +28,7 @@ export const removeItem = (itemID, token) => {
   return fetch(`${baseUrl}/items/${itemID}`, {
     method: "DELETE",
     headers: {
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
