@@ -175,6 +175,7 @@ function App() {
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       onAddClick={handleAddClick}
+                      onProfileChange={() => setActiveModal("edit")}
                     />
                   </ProtectedRoute>
                 }
