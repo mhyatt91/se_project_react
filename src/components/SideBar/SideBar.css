@@ -20,3 +20,9 @@
   object-fit: cover;
   display: block;
 }
+
+.sidebar__nav-item {
+  border: none;
+  background: none;
+  outline: none;
+}

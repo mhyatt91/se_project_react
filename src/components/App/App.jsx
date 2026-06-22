@@ -9,7 +9,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { getItems, addItem, removeItem } from "../../utils/api";
+import { getItems, addItem, removeItem, updateUser } from "../../utils/api";
 import Footer from "../Footer/Footer.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
@@ -17,6 +17,7 @@ import SigninModal from "../SigninModal/SigninModal.jsx";
 import { register, signin, authorization } from "../../utils/auth";
 //import { trusted } from "mongoose";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -91,6 +92,18 @@ function App() {
 
   const handleRegisterClick = () => {
     setActiveModal("register");
+  };
+
+  const handleUpdateUser = ({ name, avatar }) => {
+    const token = localStorage.getItem("jwt");
+    updateUser({ name, avatar }, token)
+      .then((user) => {
+        setCurrentUser(user);
+        closeActiveModal();
+      })
+      .catch(console.error);
+    console.log("Update user:", name, avatar);
+    closeActiveModal();
   };
 
   const handleLogin = ({ email, password }) => {
@@ -202,6 +215,11 @@ function App() {
             isOpen={activeModal === "signin"}
             onClose={closeActiveModal}
             onSignin={handleLogin}
+          />
+          <EditProfileModal
+            isOpen={activeModal === "edit"}
+            onClose={closeActiveModal}
+            onUpdateUser={handleUpdateUser}
           />
           <Footer />
         </div>

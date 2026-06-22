@@ -3,6 +3,8 @@ import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link, NavLink } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function Header({
   handleAddClick,
@@ -11,6 +13,7 @@ function Header({
   handleLoginClick,
   handleRegisterClick,
 }) {
+  const currentUser = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -52,10 +55,10 @@ function Header({
           </button>
           <NavLink className="header__nav-link" to="/profile">
             <div className="header__user-container">
-              <p className="header__username">Terrence Tegegne</p>
+              <p className="header__username">{currentUser.name}</p>
               <img
-                src={avatar}
-                alt="Terrence Tegegne"
+                src={currentUser.avatar}
+                alt={currentUser.name}
                 className="header__avatar"
               />
             </div>
