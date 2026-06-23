@@ -26,6 +26,12 @@ function Header({
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>
+      <p className="header__username">{currentUser?.name}</p>
+      <img
+        className="header__avatar"
+        src={currentUser?.avatar || avatar}
+        alt={currentUser?.name || ""}
+      />
       <ToggleSwitch />
       {!isLoggedIn ? (
         <>

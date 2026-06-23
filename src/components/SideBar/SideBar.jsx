@@ -8,11 +8,11 @@ const SideBar = ({ onProfileChange, onLogout }) => {
   return (
     <aside className="sidebar">
       <div className="sidebar__profile">
-        <p className="sidebar__username">{currentUser.name}</p>
+        <p className="sidebar__username">{currentUser?.name}</p>
         <img
-          src={currentUser.avatar}
-          alt={currentUser.name}
-          className="sidebar__avatar"
+          className="sidebar_avatar"
+          src={currentUser?.avatar || avatar}
+          alt={currentUser?.name || ""}
         />
       </div>
       <ul className="sidebar__nav">

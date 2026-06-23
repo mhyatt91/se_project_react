@@ -46,7 +46,7 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
 
 export const updateUser = ({ name, avatar }, token) => {
   return fetch(`${baseUrl}/users/me`, {
-    method: "CATCH",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
@@ -55,9 +55,7 @@ export const updateUser = ({ name, avatar }, token) => {
       name,
       avatar,
     }),
-  })
-    .then(handleServerResponse)
-    .then((res) => res.data);
+  }).then(handleServerResponse);
 };
 
 export const removeItem = (itemID, token) => {
