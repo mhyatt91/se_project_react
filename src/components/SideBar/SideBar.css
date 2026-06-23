@@ -13,7 +13,6 @@
 }
 
 .sidebar__avatar {
-  flex: 0 0 40px;
   height: 56px;
   border-radius: 50%;
   object-fit: cover;
@@ -24,6 +23,11 @@
 
 .sidebar__nav-item {
   border: none;
-  background: none;
+  background: transparent;
   outline: none;
+  list-style: none;
+  opacity: 1;
+  font-size: 20px;
+  font-family: "Cabinet Grotesk", "Arial", sans-serif;
+  font-weight: 700;
 }

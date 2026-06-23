@@ -26,12 +26,6 @@ function Header({
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>
-      <p className="header__username">{currentUser?.name}</p>
-      <img
-        className="header__avatar"
-        src={currentUser?.avatar || avatar}
-        alt={currentUser?.name || ""}
-      />
       <ToggleSwitch />
       {!isLoggedIn ? (
         <>
@@ -61,11 +55,11 @@ function Header({
           </button>
           <NavLink className="header__nav-link" to="/profile">
             <div className="header__user-container">
-              <p className="header__username">{currentUser.name}</p>
+              <p className="header__username">{currentUser?.name}</p>
               <img
-                src={currentUser.avatar}
-                alt={currentUser.name}
                 className="header__avatar"
+                src={currentUser?.avatar || avatar}
+                alt={currentUser?.name || ""}
               />
             </div>
           </NavLink>

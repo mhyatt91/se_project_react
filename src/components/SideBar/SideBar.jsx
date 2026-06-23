@@ -10,17 +10,21 @@ const SideBar = ({ onProfileChange, onLogout }) => {
       <div className="sidebar__profile">
         <p className="sidebar__username">{currentUser?.name}</p>
         <img
-          className="sidebar_avatar"
+          className="sidebar__avatar"
           src={currentUser?.avatar || avatar}
           alt={currentUser?.name || ""}
         />
       </div>
       <ul className="sidebar__nav">
         <li className="sidebar__nav-item">
-          <button onClick={onProfileChange}>Change Profile Data</button>
+          <button className="sidebar__nav-item" onClick={onProfileChange}>
+            Change profile data
+          </button>
         </li>
         <li className="sidebar__nav-item">
-          <button onClick={onLogout}>Logout</button>
+          <button className="sidebar__nav-item" onClick={onLogout}>
+            Log out
+          </button>
         </li>
       </ul>
     </aside>
