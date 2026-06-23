@@ -3,6 +3,11 @@
   flex-direction: row-reverse;
   align-items: center;
   gap: 16px;
+  justify-content: flex-end;
+}
+
+.sidebar__nav {
+  padding: 0;
 }
 
 .sidebar__username {
