@@ -27,23 +27,6 @@ export const addItem = ({ name, imageUrl, weather }, token) => {
     .then((res) => res.data);
 };
 
-//function handleLike(evt, id) {
-//const isLiked = evt.target.classList.contains("card__like-button_active");
-//api
-// .changeLikeStatus(id, isLiked)
-// .then(() => {
-//   evt.target.classList.toggle("card__like-button_active");
-// })
-// .catch(console.error);
-//}
-
-//changeLikeStatus(id, isLiked) {
-//return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-//method: isLiked ? "DELETE" : "PUT",
-//headers: this._headers,
-// }).then(this._handleServer);
-//}
-
 export const updateUser = ({ name, avatar }, token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
@@ -60,6 +43,26 @@ export const updateUser = ({ name, avatar }, token) => {
 
 export const removeItem = (itemID, token) => {
   return fetch(`${baseUrl}/items/${itemID}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+
+export const addCardLike = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(handleServerResponse);
+};
+
+export const removeCardLike = (itemId, token) => {
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

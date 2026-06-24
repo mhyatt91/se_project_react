@@ -9,7 +9,14 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { getItems, addItem, removeItem, updateUser } from "../../utils/api";
+import {
+  getItems,
+  addItem,
+  removeItem,
+  updateUser,
+  addCardLike,
+  removeCardLike,
+} from "../../utils/api";
 import Footer from "../Footer/Footer.jsx";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal.jsx";
@@ -34,6 +41,25 @@ function App() {
   const [cardToDelete, setCardToDelete] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    !isLiked
+      ? addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item)),
+            );
+          })
+          .catch(console.error)
+      : removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item)),
+            );
+          })
+          .catch(console.error);
+  };
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
@@ -177,6 +203,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
