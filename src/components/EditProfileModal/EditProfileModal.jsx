@@ -17,7 +17,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
 
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content">
+      <div className="modal__content modal__content_type_edit-profile">
         <form className="modal__form" onSubmit={handleSubmit}>
           <button
             onClick={onClose}
@@ -25,23 +25,27 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
             className="modal__close"
           ></button>
           <p className="modal__title">Change Profile Data *</p>
-          <p className="modal__title">Name *</p>
+          <p className="modal__label">Name *</p>
           <input
+            className="modal__input"
             type="name"
             name="name"
             placeholder="name"
             value={formData.name}
             onChange={handleChange}
           />
-          <p className="modal__title">Avatar *</p>
+          <p className="modal__label">Avatar *</p>
           <input
+            className="modal__input"
             type="avatar"
             name="avatar"
             placeholder="avatar"
             value={formData.avatar}
             onChange={handleChange}
           />
-          <button type="submit">Save Changes</button>
+          <button className="modal__submit" type="submit">
+            Save Changes
+          </button>
         </form>
       </div>
     </div>

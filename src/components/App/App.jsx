@@ -61,6 +61,12 @@ function App() {
           .catch(console.error);
   };
 
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser({});
+  };
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "F") {
       setCurrentTemperatureUnit("C");
@@ -216,6 +222,8 @@ function App() {
                       clothingItems={clothingItems}
                       onAddClick={handleAddClick}
                       onProfileChange={() => setActiveModal("edit")}
+                      onCardLike={handleCardLike}
+                      onLogout={handleSignOut}
                     />
                   </ProtectedRoute>
                 }
@@ -237,11 +245,13 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onRegister={handleRegistration}
+            onSignin={() => setActiveModal("signin")}
           />
           <SigninModal
             isOpen={activeModal === "signin"}
             onClose={closeActiveModal}
             onSignin={handleLogin}
+            onRegister={() => setActiveModal("register")}
           />
           <EditProfileModal
             isOpen={activeModal === "edit"}
