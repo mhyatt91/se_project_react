@@ -26,6 +26,7 @@ const SigninModal = ({ isOpen, onSignin, onClose, handleRegisterClick }) => {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_signin">
+        <h2 className="modal__title">Log In</h2>
         <form className="modal__form" onSubmit={handleSubmit}>
           <button
             onClick={onClose}
@@ -50,17 +51,18 @@ const SigninModal = ({ isOpen, onSignin, onClose, handleRegisterClick }) => {
             value={formData.password}
             onChange={handleChange}
           />
-
-          <button className="modal__submit" type="submit">
-            Log In
-          </button>
-          <button
-            className="modal__link-button"
-            type="submit"
-            onClick={handleRegisterClick}
-          >
-            or Sign Up
-          </button>
+          <div className="modal__buttons">
+            <button className="modal__submit" type="submit">
+              Log In
+            </button>
+            <button
+              className="modal__link-button"
+              type="button"
+              onClick={handleRegisterClick}
+            >
+              or Sign Up
+            </button>
+          </div>
         </form>
       </div>
     </div>

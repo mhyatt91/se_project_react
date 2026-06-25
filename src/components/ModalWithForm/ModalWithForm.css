@@ -49,6 +49,7 @@
   font-size: 16px;
   line-height: 20px;
   margin-top: 0;
+  margin-bottom: 24px;
 }
 
 .modal__label {
@@ -101,6 +102,21 @@
   overflow: hidden;
   width: 498px;
   height: 610px;
+}
+
+.modal__buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal__link-button {
+  border: none;
+  background: none;
+  opacity: 50%;
+  font-weight: 700;
+  padding: 0;
+  cursor: pointer;
 }
 
 .modal__form {

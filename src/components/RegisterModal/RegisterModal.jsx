@@ -28,6 +28,7 @@ const RegisterModal = ({ isOpen, onClose, onRegister, handleLoginClick }) => {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content">
+        <h2 className="modal__title">Sign Up</h2>
         <form className="modal__form" onSubmit={handleSubmit}>
           <button
             onClick={onClose}
@@ -70,16 +71,18 @@ const RegisterModal = ({ isOpen, onClose, onRegister, handleLoginClick }) => {
             value={formData.avatar}
             onChange={handleChange}
           />
-          <button className="modal__submit" type="submit">
-            Sign Up
-          </button>
-          <button
-            className="modal__link-button"
-            type="submit"
-            onClick={handleLoginClick}
-          >
-            or Log in
-          </button>
+          <div className="modal__buttons">
+            <button className="modal__submit" type="submit">
+              Sign Up
+            </button>
+            <button
+              className="modal__link-button"
+              type="button"
+              onClick={handleLoginClick}
+            >
+              or Log in
+            </button>
+          </div>
         </form>
       </div>
     </div>
