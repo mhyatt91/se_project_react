@@ -107,7 +107,7 @@ function App() {
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
       })
-      .catch((error) => console.log(error));
+      .catch(console.error);
   };
 
   const handleAddClick = () => {
@@ -135,15 +135,23 @@ function App() {
       })
       .catch(console.error);
     console.log("Update user:", name, avatar);
-    closeActiveModal();
   };
 
   const handleLogin = ({ email, password }) => {
     signin(email, password)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
-        setIsLoggedIn(true);
-        closeActiveModal();
+        const token = localStorage.getItem("jwt");
+        if (!token) {
+          return;
+        }
+        authorization(token)
+          .then((user) => {
+            setIsLoggedIn(true);
+            setCurrentUser(user);
+            closeActiveModal();
+          })
+          .catch(console.error);
       })
       .catch(console.error);
   };

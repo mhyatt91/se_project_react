@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useForm } from "../../hooks/useForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({ isOpen, onClose, onRegister, handleLoginClick }) => {
   const defaultValues = {
@@ -8,84 +10,70 @@ const RegisterModal = ({ isOpen, onClose, onRegister, handleLoginClick }) => {
     password: "",
   };
 
-  const [formData, setFormData] = useState(defaultValues);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const { values, handleChange, setValues } = useForm(defaultValues);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onRegister(formData);
+    onRegister(values);
   };
 
   return (
-    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content">
-        <h2 className="modal__title">Sign Up</h2>
-        <form className="modal__form" onSubmit={handleSubmit}>
-          <button
-            onClick={onClose}
-            type="button"
-            className="modal__close"
-          ></button>
-          <p className="modal__label">Email *</p>
-          <input
-            className="modal__input"
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          <p className="modal__label">Password *</p>
-          <input
-            className="modal__input"
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          <p className="modal__label">Name *</p>
-          <input
-            className="modal__input"
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-          <p className="modal__label">Avatar *</p>
-          <input
-            className="modal__input"
-            type="text"
-            name="avatar"
-            placeholder="Avatar URL"
-            value={formData.avatar}
-            onChange={handleChange}
-          />
-          <div className="modal__buttons">
-            <button className="modal__submit" type="submit">
-              Sign Up
-            </button>
-            <button
-              className="modal__link-button"
-              type="button"
-              onClick={handleLoginClick}
-            >
-              or Log in
-            </button>
-          </div>
-        </form>
+    <ModalWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      title="Sign Up"
+    >
+      <p className="modal__label">Email *</p>
+      <input
+        className="modal__input"
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={values.email}
+        onChange={handleChange}
+      />
+      <p className="modal__label">Password *</p>
+      <input
+        className="modal__input"
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={values.password}
+        onChange={handleChange}
+      />
+      <p className="modal__label">Name *</p>
+      <input
+        className="modal__input"
+        type="text"
+        name="name"
+        placeholder="Name"
+        value={values.name}
+        onChange={handleChange}
+      />
+      <p className="modal__label">Avatar *</p>
+      <input
+        className="modal__input"
+        type="text"
+        name="avatar"
+        placeholder="Avatar URL"
+        value={values.avatar}
+        onChange={handleChange}
+      />
+      <div className="modal__buttons">
+        <button className="modal__submit" type="submit">
+          Sign Up
+        </button>
+        <button
+          className="modal__link-button"
+          type="button"
+          onClick={handleLoginClick}
+        >
+          or Log in
+        </button>
       </div>
-    </div>
+    </ModalWithForm>
   );
 };
 
